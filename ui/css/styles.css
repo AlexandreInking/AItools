@@ -1,0 +1,202 @@
+/* Variables para facilitar la personalización (tema claro) */
+:root {
+  --color-bg: #f0f2f5;
+  --color-header: #2c3e50;
+  --color-header-text: #fff;
+  --color-subtitle: #ecf0f1;
+  --color-card-bg: #fff;
+  --color-card-title: #2c3e50;
+  --color-card-description: #666;
+  --color-footer-bg: #34495e;
+  --color-footer-text: #fff;
+  --border-radius: 12px;
+}
+
+/* Variables para tema oscuro (se activan con la clase "dark-theme" en body) */
+body.dark-theme {
+  --color-bg: #121212;
+  --color-header: #1f1f1f;
+  --color-header-text: #e0e0e0;
+  --color-subtitle: #b0b0b0;
+  --color-card-bg: #1e1e1e;
+  --color-card-title: #e0e0e0;
+  --color-card-description: #a0a0a0;
+  --color-footer-bg: #1f1f1f;
+  --color-footer-text: #e0e0e0;
+}
+
+/* Reset y configuración base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-card-title);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background-color: var(--color-header);
+  color: var(--color-header-text);
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.header-content {
+  max-width: 960px;
+  margin: auto;
+}
+
+.subtitle {
+  font-size: 1.1em;
+  font-weight: 400;
+  margin-top: 5px;
+  color: var(--color-subtitle);
+}
+
+/* Toggle switch para cambiar de tema */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+  background-color: #2196F3;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.theme-label {
+  font-size: 0.9em;
+  color: var(--color-header-text);
+}
+
+/* Main y grid de tarjetas */
+/* Grid fija de 5 columnas */
+main {
+  flex-grow: 1;
+  padding: 20px;
+  max-width: 1600px;
+  margin: auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+}
+
+/* Tarjeta de herramienta */
+.tool-card {
+  background-color: var(--color-card-bg);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.4s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Título y descripción */
+.tool-title {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--color-card-title);
+  margin-bottom: 10px;
+}
+
+.tool-description {
+  font-size: 1em;
+  color: var(--color-card-description);
+  line-height: 1.4;
+}
+
+/* Estrellita de favorito */
+.favorite {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.favorite:hover {
+  transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  text-align: center;
+  padding: 15px 0;
+  margin-top: auto;
+}
